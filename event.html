@@ -1,0 +1,39 @@
+<!--Events and Methods trong VueJS-->
+<script type="text/javascript" src="src/vue.js"></script>
+
+<div id="app">
+  <h1>{{ title }}</h1>
+  <hr />
+  <!--event-->
+  <!-- <button v-on:click=" title ='change title on click'">Click me</button> -->
+  <!--methods: doi voi methods thi dung this-->
+  <!-- <button v-on:click="changed">Click me</button> -->
+  <!--co the dung @click thay cho v-on:click-->
+  <button @click="changed">Click me</button>
+  <!--Cách sử dụng Event Modifiers-->
+  <!--dung v-on:submit.prevent de ngan chan su kien mac dinh-->
+  <form action="./sever.php" v-on:submit.prevent="handleSubmitEvent">
+    <label>Nhap first name</label>
+    <input type="text" name="first name" /><br />
+    <label>Nhap email</label>
+    <input type="email" name="email" /><br />
+    <input type="submit" name="Dang nhap" />
+  </form>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      title: "Hello world",
+    },
+    methods: {
+      changed() {
+        this.title = "changed on methods";
+      },
+      handleSubmitEvent(e) {
+        console.log(e);
+        // e.preventDefault();
+      },
+    },
+  });
+</script>
